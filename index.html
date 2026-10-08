@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyWise | University Assignment Support</title>
+  <meta name="description"
+        content="Professional university assignment support, study guidance, referencing, Excel help and one-to-one academic tutoring.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #172033;
+      background: #f7f9fc;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #e6eaf0;
+      padding: 15px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #183b70;
+    }
+    .logo span {
+      color: #3b82f6;
+    }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 600;
+      color: #334155;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    .nav-button {
+      background: #2563eb;
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+    /* HERO */
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 80px 7%;
+      background:
+        radial-gradient(circle at 80% 20%, #dbeafe 0, transparent 30%),
+        linear-gradient(135deg, #f8fbff, #eef4ff);
+    }
+    .hero-content {
+      max-width: 760px;
+    }
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-weight: 700;
+      margin-bottom: 22px;
+      font-size: 0.9rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      line-height: 1.05;
+      margin-bottom: 25px;
+      color: #102a56;
+    }
+    .hero h1 span {
+      color: #2563eb;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #526173;
+      max-width: 680px;
+      margin-bottom: 35px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 9px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+    .primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    .secondary {
+      background: white;
+      border: 1px solid #d6deea;
+      color: #1e3a6d;
+    }
+    .secondary:hover {
+      border-color: #2563eb;
+    }
+    /* GENERAL SECTIONS */
+    section {
+      padding: 80px 7%;
+    }
+    .section-heading {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 50px;
+    }
+    .section-heading h2 {
+      font-size: 2.3rem;
+      color: #102a56;
+      margin-bottom: 15px;
+    }
+    .section-heading p {
+      color: #64748b;
+      font-size: 1.05rem;
+    }
+    /* SERVICES */
+    .services {
+      background: white;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .service-card {
+      background: #f8fafc;
+      border: 1px solid #e5eaf1;
+      padding: 30px;
+      border-radius: 15px;
+      transition: 0.25s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(30, 64, 175, 0.10);
+    }
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: #dbeafe;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      color: #173b70;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      color: #64748b;
+    }
+    /* HOW IT WORKS */
+    .steps {
+      background: #f1f5f9;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .step {
+      text-align: center;
+      padding: 25px;
+    }
+    .step-number {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .step h3 {
+      margin-bottom: 8px;
+      color: #173b70;
+    }
+    .step p {
+      color: #64748b;
+    }
+    /* WHY US */
+    .why {
+      background: white;
+    }
+    .why-container {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .why h2 {
+      font-size: 2.4rem;
+      color: #102a56;
+      margin-bottom: 20px;
+    }
+    .why p {
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .check-list {
+      list-style: none;
+    }
+    .check-list li {
+      margin: 14px 0;
+      font-weight: 600;
+    }
+    .check-list li::before {
+      content: "✓";
+      color: #2563eb;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #173b70, #2563eb);
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(37,99,235,0.2);
+    }
+    .highlight-box h3 {
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+    }
+    .highlight-box p {
+      color: #dbeafe;
+    }
+    /* RESOURCES */
+    .resources {
+      background: #f8fafc;
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+    .resource {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+    .resource h3 {
+      color: #173b70;
+      margin-bottom: 10px;
+    }
+    .resource p {
+      color: #64748b;
+      margin-bottom: 18px;
+    }
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, #102a56, #2563eb);
+      color: white;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .cta p {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: #dbeafe;
+    }
+    .cta .button {
+      background: white;
+      color: #173b70;
+    }
+    /* DISCLAIMER */
+    .disclaimer {
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+      padding: 30px 7%;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 40px 7%;
+      text-align: center;
+    }
+    footer strong {
+      color: white;
+    }
+    footer p {
+      margin: 8px 0;
+    }
+    /* MOBILE */
+    @media (max-width: 700px) {
+      nav {
+        padding: 14px 5%;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding: 70px 6%;
+        min-height: 580px;
+      }
+      section {
+        padding: 65px 6%;
+      }
+      .why-container {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">
+      Study<span>Wise</span>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Support</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact" class="nav-button">Get Support</a>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="badge">
+        University Study & Assignment Support
+      </div>
+      <h1>
+        Understand your assignment.
+        <span>Improve your work.</span>
+      </h1>
+      <p>
+        Friendly, practical support for university students who want
+        help understanding assignments, organising their work,
+        improving their academic skills and becoming more confident
+        with their studies.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="button primary">
+          Get Support
+        </a>
+        <a href="#services" class="button secondary">
+          Explore Services
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-heading">
+      <h2>How We Can Help</h2>
+      <p>
+        Practical academic support designed to help you understand
+        what your university is asking you to do and produce your
+        own confident work.
+      </p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon">📚</div>
+        <h3>Assignment Guidance</h3>
+        <p>
+          Break down your assignment brief, understand the questions
+          and create a clear plan for completing your work.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">✍️</div>
+        <h3>Academic Writing</h3>
+        <p>
+          Improve structure, clarity, paragraphs, arguments and
+          academic writing techniques.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🔎</div>
+        <h3>Research Skills</h3>
+        <p>
+          Learn how to find suitable sources, evaluate information
+          and build evidence into your own arguments.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">📖</div>
+        <h3>Referencing</h3>
+        <p>
+          Get help understanding academic referencing, citations,
+          bibliographies and avoiding accidental plagiarism.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">📊</div>
+        <h3>Excel & Data</h3>
+        <p>
+          Practical help with Excel, calculations, tables,
+          charts, financial analysis and university projects.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🎓</div>
+        <h3>Study Skills</h3>
+        <p>
+          Improve planning, organisation, time management and
+          confidence when working on university assignments.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- HOW IT WORKS -->
+  <section class="steps" id="how-it-works">
+    <div class="section-heading">
+      <h2>How It Works</h2>
+      <p>
+        Simple, straightforward support without the jargon.
+      </p>
+    </div>
+    <div class="step-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Tell Us What You Need</h3>
+        <p>
+          Explain the assignment, subject or problem you're
+          struggling with.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Get Personal Support</h3>
+        <p>
+          Work through the problem with practical guidance
+          tailored to your situation.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Build Your Skills</h3>
+        <p>
+          Understand the process so you can apply what you've
+          learned to future assignments.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Submit With Confidence</h3>
+        <p>
+          Complete your own work with a clearer understanding
+          of what your university expects.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- WHY US -->
+  <section class="why">
+    <div class="why-container">
+      <div>
+        <h2>Support that helps you learn.</h2>
+        <p>
+          University assignments can be confusing, particularly
+          when you're trying to understand academic terminology,
+          assessment criteria and referencing requirements.
+        </p>
+        <p>
+          Our aim is to make the process easier to understand
+          while helping you develop skills you can use throughout
+          your degree.
+        </p>
+        <ul class="check-list">
+          <li>Friendly one-to-one guidance</li>
+          <li>Clear explanations</li>
+          <li>Practical study techniques</li>
+          <li>Excel and data support</li>
+          <li>Referencing guidance</li>
+          <li>Help understanding assignment briefs</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <h3>
+          You don't have to figure everything out alone.
+        </h3>
+        <p>
+          Whether you're starting an assignment, struggling with
+          structure or simply don't understand what the question
+          is asking, we can help you work through it step by step.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- RESOURCES -->
+  <section class="resources" id="resources">
+    <div class="section-heading">
+      <h2>Free Student Resources</h2>
+      <p>
+        Useful guides and tools to help you become more confident
+        with university study.
+      </p>
+    </div>
+    <div class="resource-grid">
+      <div class="resource">
+        <h3>Assignment Planning Guide</h3>
+        <p>
+          A simple framework for turning an assignment brief
+          into a practical plan.
+        </p>
+        <a href="#" class="button secondary">
+          Coming Soon
+        </a>
+      </div>
+      <div class="resource">
+        <h3>University Referencing Guide</h3>
+        <p>
+          Understand the basic principles behind citations
+          and reference lists.
+        </p>
+        <a href="#" class="button secondary">
+          Coming Soon
+        </a>
+      </div>
+      <div class="resource">
+        <h3>Excel for Students</h3>
+        <p>
+          Practical Excel techniques for calculations,
+          tables, analysis and presentations.
+        </p>
+        <a href="#" class="button secondary">
+          Coming Soon
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <h2>Need Help With Your Assignment?</h2>
+    <p>
+      Get in touch and tell us what you're working on.
+      We'll discuss what support would be useful and how
+      we can help you understand the task.
+    </p>
+    <!-- CHANGE THIS EMAIL ADDRESS -->
+    <a
+      href="mailto:YOUR-EMAIL-ADDRESS-HERE"
+      class="button">
+      Contact Us
+    </a>
+  </section>
+  <!-- ACADEMIC INTEGRITY -->
+  <div class="disclaimer">
+    <strong>Academic integrity:</strong>
+    Our service provides educational guidance, tutoring,
+    proofreading and study support. Students remain responsible
+    for producing and submitting their own assessed work.
+  </div>
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <strong>StudyWise</strong> — University Assignment Support
+    </p>
+    <p>
+      © 2026 StudyWise. All rights reserved.
+    </p>
+  </footer>
+</body>
+</html>
